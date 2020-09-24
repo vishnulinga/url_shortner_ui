@@ -26,6 +26,7 @@
 
 <script>
     async function login(){
+    if((document.getElementById("email").value)&&(document.getElementById("password").value)){
       try{  let res=await fetch("https://longshorturl.herokuapp.com/users/login",{
             method:"POST",
             body:JSON.stringify({
@@ -50,9 +51,14 @@
     }
        
         catch(err){console.log(err)}
+    }else{
+        alert("Please enter userID & Password to login")
+            location.reload();
+    }
     }
     
     async function register(){
+       if((document.getElementById("email").value)&&(document.getElementById("password").value)){
         let res=await fetch("https://longshorturl.herokuapp.com/users/register",{
             method:"POST",
             body:JSON.stringify({
@@ -72,6 +78,10 @@
         }
         else{
             alert("User registered. Can Login now")
+            location.reload();
+        }}
+        else{
+            alert("Please enter userID & Password to register")
             location.reload();
         }
     }
